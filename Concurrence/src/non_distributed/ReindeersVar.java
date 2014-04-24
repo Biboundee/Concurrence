@@ -10,29 +10,48 @@ public class ReindeersVar {
 		this.santavar = santavar;
 	}
 	
-	public int reindeersHereNumber(){
+	public synchronized int reindeersHereNumber(){
 		int n = 0;
-		for(boolean b : reindeers_here){
-			n = b ? n++ : n;
+		for(int i=0;i<reindeers_here.length;i++){
+			if(reindeers_here[i]){
+				n++;
+			}
 		}
 		return n;
 	}
 	
-	public synchronized void reindeerIn(int id){
-		System.out.println("Renne "+id+" attends que le pere noel se reveille.");
-		this.reindeers_here[id] = true;
-		boolean continuer = true;
-		//TODO : si reindeersHereNumber == 9 alors reveiller pere noel sinon wait
-		while(continuer){
-			if(reindeersHereNumber() == 9){
-				// reveiller pere noel
-			}
+	public synchronized void reindeerIn(int id) throws InterruptedException{
+		if(reindeersHereNumber() != 8){
+			System.out.println("Renne "+id+" attends que le pere noel se reveille.");
+			this.reindeers_here[id] = true;
+			this.wait();
+		}
+		else{
+			System.out.println("Renne "+id+" reveille le pere noel.");
+			this.reindeers_here[id] = true;
+			santavar.reveiller();
+			this.notifyAll();
 		}
 	}
 	
-	public synchronized void reindeerOut(int id){
+	public synchronized void reindeerOut(int id) throws InterruptedException{
 		System.out.println("Renne "+id+" repart en vacances.");
 		this.reindeers_here[id] = false;
+	}
+	
+	public synchronized void prepareForChristmas(int id){
+		try {
+			System.out.println("Renne "+id+ " se prepare pour noel");
+			this.wait();
+			System.out.println("Renne "+id+" va distribuer les cadeaux.");
+		} 
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public synchronized void noel_start(){
+		this.notifyAll();
 	}
 	
 }

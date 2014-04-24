@@ -12,9 +12,24 @@ public class Santa extends Thread {
 		this.santavar = santavar;
 	}
 	
+	public void helpElves(){
+		
+	}
+	
 	public void run(){
 		while(true){
+			try{
 			santavar.dormir();
+				if(reindeersvar.reindeersHereNumber() == 9){
+					reindeersvar.noel_start();
+				}
+				else{
+					helpElves();
+				}
+			}
+			catch (Exception e){
+				e.printStackTrace();
+			}
 		}
 	}
 	

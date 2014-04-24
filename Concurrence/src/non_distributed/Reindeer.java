@@ -7,7 +7,7 @@ public class Reindeer extends Thread {
 	ReindeersVar reindeersvar;
 	
 	Reindeer(int id, ReindeersVar reindeersvar){
-		holidays_time = (int) Math.round(20*Math.random());
+		holidays_time = (int) Math.round(10*Math.random()+1);
 		this.id = id;
 		this.reindeersvar = reindeersvar;
 	}
@@ -16,8 +16,11 @@ public class Reindeer extends Thread {
 		while(true){
 			try {
 				reindeersvar.reindeerIn(id);
+				reindeersvar.prepareForChristmas(id);
+				// noel dure 3s
+				Thread.sleep(3000);
 				reindeersvar.reindeerOut(id);
-				Thread.sleep(holidays_time);
+				Thread.sleep(holidays_time*1000);
 			} 
 			catch (Exception e) {
 				e.printStackTrace();

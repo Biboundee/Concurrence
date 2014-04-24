@@ -24,7 +24,7 @@ public class Main {
 		// Start()
 		santa.start();
 		for(Elf e : elves){
-			e.start();
+			//e.start();
 		}
 		for(Reindeer r : reindeers){
 			r.start();
