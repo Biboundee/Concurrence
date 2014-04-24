@@ -27,27 +27,41 @@ public class SharedVariables {
 	}
 	
 	public synchronized void elfIn(int id){
+		System.out.println("Elfe "+id+" attend qu'on s'occupe de lui.");
 		this.elves_asking[id] = true;
+		//TODO : si elfesAskingNumber > 2 alors reveiller pere noel sinon wait
 	}
 	
 	public synchronized void elfOut(int id){
+		System.out.println("Elfe "+id+" repart travailler.");
 		this.elves_asking[id] = false;
+		//TODO : ?
 	}
 	
 	public synchronized void reindeerIn(int id){
+		System.out.println("Renne "+id+" attends que le pere noel se reveille.");
 		this.reindeers_here[id] = true;
+		//TODO : si reindeersHereNumber == 9 alors reveiller pere noel sinon wait
 	}
 	
 	public synchronized void reindeerOut(int id){
+		System.out.println("Renne "+id+" repart en vacances.");
 		this.reindeers_here[id] = false;
+		//TODO : ?
 	}
 	
-	public void reveiller(){
-		
+	public synchronized void dormir(){
+		//TODO : juste wait ?
 	}
 	
-	public void dormir(){
-		
+	public synchronized void noel(){
+		System.out.println("C'est noel !");
+		//TODO : relacher tous les rennes.
+	}
+	
+	public synchronized void helpElves(){
+		System.out.println("Le pere noel aide un groupe d'elfes.");
+		//TODO : relacher les elfes du groupe.
 	}
 	
 }
