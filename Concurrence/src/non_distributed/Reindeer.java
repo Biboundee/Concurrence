@@ -15,13 +15,8 @@ public class Reindeer extends Thread {
 	public void run(){
 		while(true){
 			try {
-				var.reindeers_here[id] = true;
-				if(var.reindeersHereNumber()==9){
-					// reveiller le pere noel
-				}
-				else{
-					// attendre les autres rennes
-				}
+				var.reindeerIn(id);
+				var.reindeerOut(id);
 				Thread.sleep(holidays_time);
 			} 
 			catch (Exception e) {

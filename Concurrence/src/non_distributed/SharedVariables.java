@@ -10,7 +10,7 @@ public class SharedVariables {
 		reindeers_here = new boolean [reindeers];
 	}
 	
-	public int askingElvesNumber(){
+	public int elvesAskingNumber(){
 		int n = 0;
 		for(boolean b : elves_asking){
 			n = b ? n++ : n;
@@ -26,6 +26,28 @@ public class SharedVariables {
 		return n;
 	}
 	
+	public synchronized void elfIn(int id){
+		this.elves_asking[id] = true;
+	}
 	
+	public synchronized void elfOut(int id){
+		this.elves_asking[id] = false;
+	}
+	
+	public synchronized void reindeerIn(int id){
+		this.reindeers_here[id] = true;
+	}
+	
+	public synchronized void reindeerOut(int id){
+		this.reindeers_here[id] = false;
+	}
+	
+	public void reveiller(){
+		
+	}
+	
+	public void dormir(){
+		
+	}
 	
 }

@@ -15,13 +15,8 @@ public class Elf extends Thread {
 	public void run(){
 		while(true){
 			try{
-				var.elves_asking[id] = true;
-				if(var.askingElvesNumber()>2){
-					// reveiller le pere noel
-				}
-				else{
-					// attendre qu'un groupe de 3 elfes se forme
-				}
+				var.elfIn(id);
+				var.elfOut(id);
 				Thread.sleep(working_time);
 			}
 			catch (Exception e){
