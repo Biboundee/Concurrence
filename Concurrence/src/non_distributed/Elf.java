@@ -4,19 +4,19 @@ public class Elf extends Thread {
 	
 	int working_time;
 	int id;
-	SharedVariables var;
+	ElvesVar elvesvar;
 
-	Elf(int id, SharedVariables var){
+	Elf(int id, ElvesVar elvesvar){
 		working_time = (int) Math.round(10*Math.random());
 		this.id = id;
-		this.var = var;
+		this.elvesvar = elvesvar;
 	}
 	
 	public void run(){
 		while(true){
 			try{
-				var.elfIn(id);
-				var.elfOut(id);
+				elvesvar.elfIn(id);
+				elvesvar.elfOut(id);
 				Thread.sleep(working_time);
 			}
 			catch (Exception e){

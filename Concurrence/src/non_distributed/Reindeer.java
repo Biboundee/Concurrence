@@ -4,19 +4,19 @@ public class Reindeer extends Thread {
 	
 	int holidays_time;
 	int id;
-	SharedVariables var;
+	ReindeersVar reindeersvar;
 	
-	Reindeer(int id, SharedVariables var){
+	Reindeer(int id, ReindeersVar reindeersvar){
 		holidays_time = (int) Math.round(20*Math.random());
 		this.id = id;
-		this.var = var;
+		this.reindeersvar = reindeersvar;
 	}
 	
 	public void run(){
 		while(true){
 			try {
-				var.reindeerIn(id);
-				var.reindeerOut(id);
+				reindeersvar.reindeerIn(id);
+				reindeersvar.reindeerOut(id);
 				Thread.sleep(holidays_time);
 			} 
 			catch (Exception e) {

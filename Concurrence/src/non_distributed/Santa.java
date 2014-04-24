@@ -2,21 +2,19 @@ package non_distributed;
 
 public class Santa extends Thread {
 	
-	SharedVariables var;
+	ElvesVar elvesvar;
+	ReindeersVar reindeersvar;
+	SantaVar santavar;
 	
-	Santa(SharedVariables var){
-		this.var = var;
+	Santa(ElvesVar elvesvar, ReindeersVar reindeersvar, SantaVar santavar){
+		this.elvesvar = elvesvar;
+		this.reindeersvar = reindeersvar;
+		this.santavar = santavar;
 	}
 	
 	public void run(){
 		while(true){
-			var.dormir();
-			if(var.reindeersHereNumber()==9){
-				var.noel();
-			}
-			else{
-				var.helpElves();
-			}
+			santavar.dormir();
 		}
 	}
 	

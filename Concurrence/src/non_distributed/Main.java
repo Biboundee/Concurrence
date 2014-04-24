@@ -8,16 +8,19 @@ public class Main {
 		int nb_reindeers = 9;
 		
 		// Initialisation
-		SharedVariables var = new SharedVariables(nb_elves, nb_reindeers);
-		Santa santa = new Santa(var);
+		SantaVar santavar = new SantaVar();
+		ElvesVar elvesvar = new ElvesVar(nb_elves,santavar);
+		ReindeersVar reindeersvar = new ReindeersVar(nb_reindeers,santavar);
+		Santa santa = new Santa(elvesvar,reindeersvar,santavar);
 		Elf [] elves = new Elf [nb_elves];
 		for(int i=0;i<nb_elves;i++){
-			elves[i] = new Elf(i, var);
+			elves[i] = new Elf(i, elvesvar);
 		}
 		Reindeer [] reindeers = new Reindeer [nb_reindeers];
 		for(int i=0;i<nb_reindeers;i++){
-			reindeers[i] = new Reindeer(i, var);
+			reindeers[i] = new Reindeer(i, reindeersvar);
 		}
+		
 		// Start()
 		santa.start();
 		for(Elf e : elves){
