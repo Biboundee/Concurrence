@@ -5,9 +5,11 @@ public class Elf extends Thread {
 	int working_time;
 	int id;
 	ElvesVar elvesvar;
+	int ticketNumber;
+	boolean isCalled;
 
 	Elf(int id, ElvesVar elvesvar){
-		working_time = (int) Math.round(10*Math.random());
+		working_time = (int) Math.round(3*Math.random()+3);
 		this.id = id;
 		this.elvesvar = elvesvar;
 	}
@@ -15,7 +17,7 @@ public class Elf extends Thread {
 	public void run(){
 		while(true){
 			try{
-				elvesvar.elfIn(id);
+				elvesvar.elfIn(this);
 				elvesvar.elfOut(id);
 				Thread.sleep(working_time);
 			}

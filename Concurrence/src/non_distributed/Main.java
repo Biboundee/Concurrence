@@ -16,6 +16,7 @@ public class Main {
 		for(int i=0;i<nb_elves;i++){
 			elves[i] = new Elf(i, elvesvar);
 		}
+		elvesvar.setElves(elves);
 		Reindeer [] reindeers = new Reindeer [nb_reindeers];
 		for(int i=0;i<nb_reindeers;i++){
 			reindeers[i] = new Reindeer(i, reindeersvar);
@@ -24,7 +25,7 @@ public class Main {
 		// Start()
 		santa.start();
 		for(Elf e : elves){
-			//e.start();
+			e.start();
 		}
 		for(Reindeer r : reindeers){
 			r.start();

@@ -22,7 +22,7 @@ Bouvle sur ElfIn() -> ElfOut()
 
 Santa : 
 
-Boucle sur dormir() -> reindeervar.noel_start() ou AIDER ELFES
+Boucle sur dormir() -> reindeervar.noel_start() si 9 rennes, elvesvar.helpElves() sinon.
 
 Main : 
 

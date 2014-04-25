@@ -5,8 +5,8 @@ public class ReindeersVar {
 	public boolean [] reindeers_here;
 	SantaVar santavar;
 	
-	public ReindeersVar(int reindeers, SantaVar santavar) {
-		reindeers_here = new boolean [reindeers];
+	public ReindeersVar(int nb_reindeers, SantaVar santavar) {
+		reindeers_here = new boolean [nb_reindeers];
 		this.santavar = santavar;
 	}
 	
@@ -20,21 +20,26 @@ public class ReindeersVar {
 		return n;
 	}
 	
-	public synchronized void reindeerIn(int id) throws InterruptedException{
-		if(reindeersHereNumber() != 8){
-			System.out.println("Renne "+id+" attends que le pere noel se reveille.");
-			this.reindeers_here[id] = true;
-			this.wait();
+	public synchronized void reindeerIn(int id){
+		try{
+			if(reindeersHereNumber() != 8){
+				System.out.println("Renne "+id+" attends que le pere noel se reveille.");
+				this.reindeers_here[id] = true;
+				this.wait();
+			}
+			else{
+				System.out.println("Renne "+id+" reveille le pere noel.");
+				this.reindeers_here[id] = true;
+				santavar.reveiller();
+				this.notifyAll();
+			}
 		}
-		else{
-			System.out.println("Renne "+id+" reveille le pere noel.");
-			this.reindeers_here[id] = true;
-			santavar.reveiller();
-			this.notifyAll();
+		catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 	
-	public synchronized void reindeerOut(int id) throws InterruptedException{
+	public synchronized void reindeerOut(int id){
 		System.out.println("Renne "+id+" repart en vacances.");
 		this.reindeers_here[id] = false;
 	}

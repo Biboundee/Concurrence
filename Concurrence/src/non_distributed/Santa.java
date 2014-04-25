@@ -12,19 +12,18 @@ public class Santa extends Thread {
 		this.santavar = santavar;
 	}
 	
-	public void helpElves(){
-		
-	}
-	
 	public void run(){
 		while(true){
 			try{
-			santavar.dormir();
+				System.out.println("Santa va dormir");
+				santavar.dormir();
+				System.out.println("Santa est reveille.");
 				if(reindeersvar.reindeersHereNumber() == 9){
 					reindeersvar.noel_start();
 				}
 				else{
-					helpElves();
+					System.out.println("hohohoho");
+					elvesvar.helpElves();
 				}
 			}
 			catch (Exception e){

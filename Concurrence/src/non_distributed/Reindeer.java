@@ -7,7 +7,7 @@ public class Reindeer extends Thread {
 	ReindeersVar reindeersvar;
 	
 	Reindeer(int id, ReindeersVar reindeersvar){
-		holidays_time = (int) Math.round(10*Math.random()+1);
+		holidays_time = (int) Math.round(5*Math.random()+5);
 		this.id = id;
 		this.reindeersvar = reindeersvar;
 	}
