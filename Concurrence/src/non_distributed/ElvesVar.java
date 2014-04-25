@@ -18,6 +18,14 @@ public class ElvesVar {
 		this.elves = elves;
 	}
 	
+	void printTickets(){
+		System.out.println();
+		for(Elf e : elves){
+			System.out.println("Elf "+e.id+" : "+e.ticketNumber+" ");
+		}
+		System.out.println();
+	}
+	
 	Elf [] getFirstGroup(){
 		Elf [] firstgroup = new Elf[3];
 		Vector<Elf> tmp = new Vector<Elf>();
@@ -33,11 +41,15 @@ public class ElvesVar {
 	
 	Elf elfMin(Vector<Elf> elves){
 		Elf elfmin = elves.get(0);
+		System.out.println();
 		for(Elf e : elves){
+			System.out.print(e.id+" : "+e.ticketNumber+" | ");
 			if(e.ticketNumber < elfmin.ticketNumber && e.ticketNumber!=-1){
 				elfmin = e;
 			}
 		}
+		System.out.println();
+		System.out.println("elfe choisi "+elfmin.id);
 		return elfmin;
 	}
 	
@@ -56,7 +68,7 @@ public class ElvesVar {
 		try{
 			elf.ticketNumber = ElvesVar.ticketNumber++;
 			while(!elf.isCalled){
-				if(elvesAskingNumber()<3){
+				if(elvesAskingNumber()<2){
 					System.out.println("Elfe "+elf.id+" attend qu'on s'occupe de lui.");
 					this.elves_asking[elf.id] = true;
 					this.wait();
@@ -82,9 +94,9 @@ public class ElvesVar {
 	}
 	
 	public synchronized void helpElves(){
+		printTickets();
 		for(Elf e : getFirstGroup()){
 			e.isCalled = true;
-			System.out.println("reveiller "+e.id);
 		}
 		this.notifyAll();
 	}

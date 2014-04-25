@@ -5,7 +5,7 @@ public class Elf extends Thread {
 	int working_time;
 	int id;
 	ElvesVar elvesvar;
-	int ticketNumber;
+	int ticketNumber = -1;
 	boolean isCalled;
 
 	Elf(int id, ElvesVar elvesvar){
