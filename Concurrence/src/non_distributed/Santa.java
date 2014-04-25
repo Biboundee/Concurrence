@@ -22,7 +22,6 @@ public class Santa extends Thread {
 					reindeersvar.noel_start();
 				}
 				else{
-					System.out.println("hohohoho");
 					elvesvar.helpElves();
 				}
 			}

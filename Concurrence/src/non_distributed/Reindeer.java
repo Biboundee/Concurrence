@@ -13,18 +13,19 @@ public class Reindeer extends Thread {
 	}
 	
 	public void run(){
-		while(true){
-			try {
+		try {
+			Thread.sleep(holidays_time*1000);
+			while(true){
 				reindeersvar.reindeerIn(id);
 				reindeersvar.prepareForChristmas(id);
-				// noel dure 3s
-				Thread.sleep(3000);
+				// noel dure 2s
+				Thread.sleep(2000);
 				reindeersvar.reindeerOut(id);
 				Thread.sleep(holidays_time*1000);
 			} 
-			catch (Exception e) {
-				e.printStackTrace();
-			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	

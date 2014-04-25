@@ -15,15 +15,16 @@ public class Elf extends Thread {
 	}
 	
 	public void run(){
-		while(true){
-			try{
+		try{
+			Thread.sleep(working_time*1000);
+			while(true){
 				elvesvar.elfIn(this);
 				elvesvar.elfOut(id);
-				Thread.sleep(working_time);
+				Thread.sleep(working_time*1000);
 			}
-			catch (Exception e){
-				e.printStackTrace();
-			}
+		}
+		catch (Exception e){
+			e.printStackTrace();
 		}
 	}
 	

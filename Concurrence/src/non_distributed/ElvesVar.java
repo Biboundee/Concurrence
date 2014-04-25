@@ -34,7 +34,7 @@ public class ElvesVar {
 	Elf elfMin(Vector<Elf> elves){
 		Elf elfmin = elves.get(0);
 		for(Elf e : elves){
-			if(e.ticketNumber < elfmin.ticketNumber){
+			if(e.ticketNumber < elfmin.ticketNumber && e.ticketNumber!=-1){
 				elfmin = e;
 			}
 		}
@@ -84,6 +84,7 @@ public class ElvesVar {
 	public synchronized void helpElves(){
 		for(Elf e : getFirstGroup()){
 			e.isCalled = true;
+			System.out.println("reveiller "+e.id);
 		}
 		this.notifyAll();
 	}

@@ -48,7 +48,6 @@ public class ReindeersVar {
 		try {
 			System.out.println("Renne "+id+ " se prepare pour noel");
 			this.wait();
-			System.out.println("Renne "+id+" va distribuer les cadeaux.");
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace();
@@ -56,6 +55,7 @@ public class ReindeersVar {
 	}
 	
 	public synchronized void noel_start(){
+		System.out.println("Santa donne le feu vert. C'est noel !");
 		this.notifyAll();
 	}
 	

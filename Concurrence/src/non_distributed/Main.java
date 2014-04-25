@@ -4,7 +4,7 @@ public class Main {
 	public static void main(String [] args){
 		
 		// variables 
-		int nb_elves = 7;
+		int nb_elves = 5;
 		int nb_reindeers = 9;
 		
 		// Initialisation
