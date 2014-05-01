@@ -22,16 +22,16 @@ public class ReindeersVar {
 	
 	public synchronized void reindeerIn(int id){
 		try{
-			if(reindeersHereNumber() != 8){
-				System.out.println("Renne "+id+" attends que le pere noel se reveille.");
-				this.reindeers_here[id] = true;
+			this.reindeers_here[id] = true;
+			if(reindeersHereNumber() != 9){
+				System.out.println("Renne "+id+" attend.");
 				this.wait();
 			}
 			else{
-				System.out.println("Renne "+id+" reveille le pere noel.");
-				this.reindeers_here[id] = true;
+				System.out.println("Renne "+id+" reveille Santa.");
+				santavar.santabusy = true;
 				santavar.reveiller();
-				this.notifyAll();
+				this.wait();
 			}
 		}
 		catch(Exception e){
@@ -40,22 +40,13 @@ public class ReindeersVar {
 	}
 	
 	public synchronized void reindeerOut(int id){
-		System.out.println("Renne "+id+" repart en vacances.");
+		System.out.println("Renne "+id+" repart.");
 		this.reindeers_here[id] = false;
-	}
-	
-	public synchronized void prepareForChristmas(int id){
-		try {
-			System.out.println("Renne "+id+ " se prepare pour noel");
-			this.wait();
-		} 
-		catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		santavar.santabusy = false;
 	}
 	
 	public synchronized void noel_start(){
-		System.out.println("Santa donne le feu vert. C'est noel !");
+		System.out.println("C'est noel !");
 		this.notifyAll();
 	}
 	

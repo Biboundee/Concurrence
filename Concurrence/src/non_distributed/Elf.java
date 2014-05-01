@@ -3,22 +3,27 @@ package non_distributed;
 public class Elf extends Thread {
 	
 	int working_time;
+	int ticketNumber;
+	boolean isCalled;
+	boolean isLastElf;
 	int id;
-	ElfVar elfvar;
-	int ticketNumber = 999;
+	ElvesVar elvesvar;
 
-	Elf(int id, ElfVar elfvar){
+	Elf(int id,ElvesVar elvesvar){
 		working_time = (int) Math.round(3*Math.random()+3);
+		ticketNumber = 999;
+		isCalled = false;
+		isLastElf = false;
 		this.id = id;
-		this.elfvar = elfvar;
+		this.elvesvar = elvesvar;
 	}
 	
 	public void run(){
 		try{
 			Thread.sleep(working_time*1000);
 			while(true){
-				elfvar.elfIn(this);
-				elfvar.elfOut(id);
+				elvesvar.elfIn(this);
+				elvesvar.elfOut(this);
 				Thread.sleep(working_time*1000);
 			}
 		}

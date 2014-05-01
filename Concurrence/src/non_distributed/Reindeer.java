@@ -17,9 +17,6 @@ public class Reindeer extends Thread {
 			Thread.sleep(holidays_time*1000);
 			while(true){
 				reindeersvar.reindeerIn(id);
-				reindeersvar.prepareForChristmas(id);
-				// noel dure 2s
-				Thread.sleep(2000);
 				reindeersvar.reindeerOut(id);
 				Thread.sleep(holidays_time*1000);
 			} 

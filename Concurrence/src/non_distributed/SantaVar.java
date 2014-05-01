@@ -4,15 +4,22 @@ import java.util.Vector;
 
 public class SantaVar {
 
-	static int ticketNumber = 0;
+	static int ticketNumber;
+	boolean santabusy;
+	boolean noel;
 	public boolean [] elves_asking;
 	Elf [] elves;
-	boolean santabusy = false;
 	
 	SantaVar(int nb_elves){
 		elves_asking = new boolean [nb_elves];
+		ticketNumber = 0;
+		santabusy = false;
+		noel = false;
 	}
 	
+	public void setElves(Elf [] elves){
+		this.elves = elves;
+	}
 	
 	public synchronized int elvesAskingNumber(){
 		int n = 0;
@@ -47,32 +54,12 @@ public class SantaVar {
 		return firstgroup;
 	}
 	
-	void printTickets(){
-		System.out.println();
-		for(Elf e : elves){
-			System.out.println("Elf "+e.id+" : "+e.ticketNumber+" ");
-		}
-		System.out.println();
-	}
-	
-	public void setElves(Elf [] elves){
-		this.elves = elves;
-	}
-	
-	public synchronized void helpElves(){
-		printFirstGroup(getFirstGroup());
+	public synchronized void setFirstGroup(){
 		Elf [] firstGroup = getFirstGroup();
 		for(int i=0;i<firstGroup.length;i++){
-			firstGroup[i].elfvar.santaHelp();
-			if(i==2){firstGroup[i].elfvar.isLastElf = true;}
+			firstGroup[i].isCalled = true;
+			//if(i==2){firstGroup[i].isLastElf = true;}
 		}
-	}
-	
-	void printFirstGroup(Elf[] elves){
-		for(int i=0;i<3;i++){
-			System.out.print("#"+elves[i].id+" ticket = "+elves[i].ticketNumber+" ");
-		}
-		System.out.println();
 	}
 	
 	public synchronized void reveiller(){

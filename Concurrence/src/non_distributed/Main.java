@@ -9,13 +9,12 @@ public class Main {
 		
 		// Initialisation
 		SantaVar santavar = new SantaVar(nb_elves);
-		ElfVar [] elvesvar = new ElfVar [nb_elves];
+		ElvesVar elvesvar = new ElvesVar(santavar);
 		ReindeersVar reindeersvar = new ReindeersVar(nb_reindeers,santavar);
-		Santa santa = new Santa(reindeersvar,santavar);
+		Santa santa = new Santa(elvesvar,reindeersvar,santavar);
 		Elf [] elves = new Elf [nb_elves];
 		for(int i=0;i<nb_elves;i++){
-			elvesvar[i] = new ElfVar(santavar);
-			elves[i] = new Elf(i, elvesvar[i]);
+			elves[i] = new Elf(i,elvesvar);
 		}
 		santavar.setElves(elves);
 		Reindeer [] reindeers = new Reindeer [nb_reindeers];
