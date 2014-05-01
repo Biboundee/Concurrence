@@ -58,7 +58,6 @@ public class SantaVar {
 		Elf [] firstGroup = getFirstGroup();
 		for(int i=0;i<firstGroup.length;i++){
 			firstGroup[i].isCalled = true;
-			//if(i==2){firstGroup[i].isLastElf = true;}
 		}
 	}
 	

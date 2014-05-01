@@ -23,7 +23,7 @@ public class ReindeersVar {
 	public synchronized void reindeerIn(int id){
 		try{
 			this.reindeers_here[id] = true;
-			if(reindeersHereNumber() != 9){
+			if(reindeersHereNumber() != 9 || santavar.santabusy){
 				System.out.println("Renne "+id+" attend.");
 				this.wait();
 			}
