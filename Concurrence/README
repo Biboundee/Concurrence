@@ -1,0 +1,59 @@
+Principe global : 
+
+Les elfes ont une variable partagée qu'ils partagent entre eux et avec Santa (elvesVar).
+Les rennes ont une variable partagée qu'ils partagent entre eux et avec Santa (reindeersVar).
+Santa a une variable partagé qu'il partage avec tout le monde (santaVar). Il a également besoin
+de la liste des elfes pour pouvoir réveiller certains en particulier.
+
+RENNES
+
+Les rennes bouclent sur :
+
+_ reindeerIn() : le renne arrive, s'ajoute à la liste des rennes en attente et,
+s'il y a moins de 9 rennes en attente il attend, sinon il réveille Santa.
+_ reindeerOut() : le renne se retire de la liste des rennes en attente et repart.
+_ sleep pour un temps random correspondant à sa durée de vacances.
+
+ELFES
+
+Les elfes bouclent sur : 
+_ elfIn() : l'elfe arrive, s'ajoute à la liste des elfes en attente et prend un ticket,
+s'il y a moins de 3 elfes en attente il attend, sinon il réveille Santa.
+_ elfOut() : l'elfe se retire de la liste des elfes en attente et repart.
+_ sleep pour un temps random correspondant à sa durée de travail.
+
+SANTA
+
+Santa boucle sur : 
+_ dormir jusqu'à être réveillé.
+_ une fois réveillé :
+	s'il y a 9 rennes il les réveille et lance Noel.
+	s'il y a 3 elfes ou plus il réveille les trois elfes ayant le plus petit ticket.
+	s'il y a 9 rennes ET 3 elfes il s'occupe d'abord des rennes puis des elfes.
+_ il se rendort.
+
+Rôles des classes :
+
+_ Santa : 
+Thread pour Santa qui execute sa boucle.
+
+_ Santavar : 
+Variable partagée de Santa, sert à réveiller ou faire dormir Santa.
+Contient également la liste des elfes et des elfes en attente
+et les méthodes pour calculer le groupe des trois premiers elfes.
+
+_ Reindeer :
+Thread pour chaque renne qui execute sa boucle.
+
+_ ReindeersVar : 
+Variable partagée des rennes, contient la liste des rennes en attente et les méthodes 
+d'arrivée et de départ. C'est via cette variable que Santa réveille les rennes.
+
+_ Elf :
+Thread pour chaque elfe qui execute sa boucle.
+
+_ ElvesVar : 
+Variable partagée des elfes, contient les méthodes d'arrivée et de départ.
+C'est via cette variable que Santa réveille les elfes (il réveille tous les elfes 
+mais auparavant il change un booleen seulement sur les trois elfes appelés qui
+repartiront, les autres se remettront en attente).

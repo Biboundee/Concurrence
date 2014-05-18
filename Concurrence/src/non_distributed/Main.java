@@ -16,6 +16,7 @@ public class Main {
 		for(int i=0;i<nb_elves;i++){
 			elves[i] = new Elf(i,elvesvar);
 		}
+		// On donne la liste des elfes a Santa
 		santavar.setElves(elves);
 		Reindeer [] reindeers = new Reindeer [nb_reindeers];
 		for(int i=0;i<nb_reindeers;i++){

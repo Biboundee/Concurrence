@@ -23,7 +23,6 @@ public class Santa extends Thread {
 				if(reindeers == 9){
 					System.out.println("Santa s'occupe des rennes.");
 					reindeersvar.noel_start();
-					Thread.sleep(1000);
 				}
 				if(elves>2){
 					System.out.println("Santa s'occupe des elfes.");
